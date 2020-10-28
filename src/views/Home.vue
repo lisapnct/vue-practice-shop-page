@@ -28,14 +28,13 @@ export default {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(5, 1fr);
-  grid-column-gap: 10px;
+  grid-column-gap: 30px;
   grid-row-gap: 0px;
-  height: 80vh;
+  height: 100vh;
 }
 
 .left-container {
   grid-area: 1 / 1 / 6 / 2;
-  border-right: 1px solid black;
 }
 .right-container {
   grid-area: 1 / 2 / 6 / 5;
