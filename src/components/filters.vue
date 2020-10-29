@@ -7,11 +7,11 @@
       <div class="price-input">
         <input
           id="price-range"
-          @change="$emit('price-change', maxPrice)"
+          @change="setMaxPrice"
           v-model.number="maxPrice"
           type="range"
-          min="10"
-          max="60"
+          min="20"
+          max="80"
           step="1"
         />
         <label for="price-range">{{ maxPrice }}€</label>
@@ -28,7 +28,6 @@
       </div>
     </div>
     <hr />
-    <p>brands</p>
   </div>
 </template>
 
@@ -37,10 +36,14 @@ export default {
   name: "Filters",
   components: {},
   data() {
-    console.log("hello");
     return {
-      maxPrice: 10
+      maxPrice: 50
     };
+  },
+  methods: {
+    setMaxPrice() {
+      this.$store.commit("setMaxPrice", this.maxPrice);
+    }
   }
 };
 </script>
