@@ -6,6 +6,7 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     maxPrice: 50,
+    color: "",
     products: [
       {
         name: "blue tshirt",
@@ -41,6 +42,13 @@ export default new Vuex.Store({
     setMaxPrice(state, value) {
       state.maxPrice = value;
     },
+    setFilterColor(state, value) {
+      state.color = value;
+    },
+    resetFilters(state) {
+      state.maxPrice = 50;
+      state.color = '';
+    }
   },
   actions: {},
   modules: {},

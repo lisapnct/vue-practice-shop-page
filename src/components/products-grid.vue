@@ -1,7 +1,7 @@
 <template>
   <div class="grid">
     <ProductCard
-      v-for="(product, i) in filteredByPrice"
+      v-for="(product, i) in filteredProducts"
       :key="i"
       :product="product"
     />
@@ -18,10 +18,13 @@ export default {
   },
 
   computed: {
-    filteredByPrice() {
-      return this.$store.state.products.filter(
-        product => product.price <= this.$store.state.maxPrice
+    filteredProducts() {
+      let filteredProdArr = this.$store.state.products.filter(
+        product => this.$store.state.color.length === 0 
+        ? product.price <= this.$store.state.maxPrice 
+        : product.price <= this.$store.state.maxPrice && product.color === this.$store.state.color
       );
+      return filteredProdArr;
     }
   }
 };

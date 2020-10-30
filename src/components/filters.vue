@@ -1,6 +1,6 @@
 <template>
   <div class="filter-container">
-    <button>reset filters</button>
+    <button @click="resetState" >reset filters</button>
     <hr />
     <div class="price-filter">
       <p>price max</p>
@@ -21,10 +21,10 @@
     <div class="color-filter">
       <p>colors</p>
       <div class="color-blocks">
-        <div class="color-block" :style="{ 'background-color': 'red' }"></div>
-        <div class="color-block" :style="{ 'background-color': 'blue' }"></div>
-        <div class="color-block" :style="{ 'background-color': 'green' }"></div>
-        <div class="color-block" :style="{ 'background-color': 'black' }"></div>
+        <div id="red" @click="setColorFilter" class="color-block" :style="{ 'background-color': 'red' }"></div>
+        <div id="blue" @click="setColorFilter" class="color-block" :style="{ 'background-color': 'blue' }"></div>
+        <div id="green" @click="setColorFilter" class="color-block" :style="{ 'background-color': 'green' }"></div>
+        <div id="black" @click="setColorFilter" class="color-block" :style="{ 'background-color': 'black' }"></div>
       </div>
     </div>
     <hr />
@@ -37,12 +37,20 @@ export default {
   components: {},
   data() {
     return {
-      maxPrice: 50
+      maxPrice: 50,
+      color: '', 
     };
   },
   methods: {
     setMaxPrice() {
       this.$store.commit("setMaxPrice", this.maxPrice);
+    },
+    setColorFilter(evt) {
+      this.color = evt.currentTarget.id;
+      this.$store.commit("setFilterColor", this.color);
+    },
+    resetState() {
+      this.$store.commit("resetFilters")
     }
   }
 };
