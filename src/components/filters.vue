@@ -50,7 +50,8 @@ export default {
       this.$store.commit("setFilterColor", this.color);
     },
     resetState() {
-      this.$store.commit("resetFilters")
+      this.maxPrice = 50;
+      this.$store.commit("resetFilters");
     }
   }
 };
